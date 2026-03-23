@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import logoImg from '../../assets/logo.png'
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -52,17 +53,13 @@ export default function Navbar() {
         <a href="#home" style={{ textDecoration: 'none' }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontWeight: 800,
-              fontSize: '1.4rem',
-              background: 'linear-gradient(135deg, #00f5ff, #7c3aed)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
           >
-            Ino<span style={{ WebkitTextFillColor: '#f0f0ff', color: '#f0f0ff' }}>Void</span>
+            <img
+              src={logoImg}
+              alt="InoVoid Logo"
+              style={{ height: '38px', width: 'auto', display: 'block' }}
+            />
           </motion.div>
         </a>
 
