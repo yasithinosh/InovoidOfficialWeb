@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Twitter, Instagram, Linkedin, Mail, Globe } from 'lucide-react'
+import logoImg from '../../assets/logo.png'
 
 const socials = [
   { icon: Github, href: 'https://github.com/inovoid', label: 'GitHub' },
@@ -29,18 +30,11 @@ export default function Footer() {
         }}>
           {/* Brand */}
           <div>
-            <div style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontWeight: 800,
-              fontSize: '1.8rem',
-              background: 'linear-gradient(135deg, #00f5ff, #7c3aed)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              marginBottom: '16px',
-            }}>
-              InoVoid
-            </div>
+            <img
+              src={logoImg}
+              alt="InoVoid"
+              style={{ height: '44px', width: 'auto', marginBottom: '16px', display: 'block' }}
+            />
             <p style={{ color: '#8892aa', lineHeight: 1.7, fontSize: '0.9rem', maxWidth: '240px' }}>
               Building the future, one pixel at a time. We create stunning digital experiences.
             </p>
@@ -120,10 +114,14 @@ export default function Footer() {
           <p style={{ color: '#4a5568', fontSize: '0.85rem' }}>
             © {new Date().getFullYear()} InoVoid Development. All rights reserved.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#4a5568', fontSize: '0.85rem' }}>
+          <a href="https://inovoid.me" target="_blank" rel="noopener noreferrer"
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#4a5568', fontSize: '0.85rem', textDecoration: 'none' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#00f5ff'}
+            onMouseLeave={e => e.currentTarget.style.color = '#4a5568'}
+          >
             <Globe size={14} />
             <span>inovoid.me</span>
-          </div>
+          </a>
         </div>
       </div>
     </footer>
