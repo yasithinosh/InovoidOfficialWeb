@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
-import Particles from '@tsparticles/react'
+import { useEffect, useState } from 'react'
+import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 
 export default function ParticlesBg() {
-  const [init, setInit] = useState(false)
+  const [inited, setInited] = useState(false)
 
   useEffect(() => {
-    loadSlim(window.tsParticles).then(() => setInit(true)).catch(() => {})
-  }, [])
-
-  const particlesInit = useCallback(async engine => {
-    await loadSlim(engine)
-    setInit(true)
+    initParticlesEngine(async engine => {
+      await loadSlim(engine)
+    }).then(() => setInited(true))
   }, [])
 
   const options = {
@@ -20,7 +17,7 @@ export default function ParticlesBg() {
     interactivity: {
       events: {
         onHover: { enable: true, mode: 'repulse' },
-        resize: true,
+        resize: { enable: true },
       },
       modes: {
         repulse: { distance: 100, duration: 0.4 },
@@ -51,10 +48,11 @@ export default function ParticlesBg() {
     detectRetina: true,
   }
 
+  if (!inited) return null
+
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
       options={options}
       style={{
         position: 'absolute',
